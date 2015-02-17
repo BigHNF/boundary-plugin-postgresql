@@ -10,13 +10,14 @@ Extracts metrics from a PostgreSQL database instance.
 |:----------|:-----:|:-------:|:-------:|:----:|
 | Supported |   v   |    v    |    v    |  v   |
 
-For Boundary Meter V4.0 (to update/download - curl -fsS -d '{"token":"api.<Your API Key Here>"}' -H 'Content-Type: application/json' https://meter.boundary.com/setup_meter > setup_meter.sh && chmod +x setup_meter.sh && ./setup_meter.sh)
+#### For Boundary Meter V4.0
+(to update/download - curl -fsS -d '{"token":"api.<Your API Key Here>"}' -H 'Content-Type: application/json' https://meter.boundary.com/setup_meter > setup_meter.sh && chmod +x setup_meter.sh && ./setup_meter.sh)
 
 |  Runtime | node.js | Python | Java |
 |:---------|:-------:|:------:|:----:|
 | Required |         |        |      |
 
-For Boundary Meter less than V4.0
+#### For Boundary Meter less than V4.0
 
 |  Runtime | node.js | Python | Java |
 |:---------|:-------:|:------:|:----:|
@@ -27,6 +28,7 @@ For Boundary Meter less than V4.0
 
 ### Plugin Setup
 
+#### For Boundary Meter Versions Less than V4.0
 #### Installation of the PsycoPG2 Library Using `pip`
 
 1. Install [pip](http://pip.readthedocs.org/en/latest/installing.html) if not already installed
@@ -42,6 +44,9 @@ For Boundary Meter less than V4.0
      ```
 
 ### Plugin Configuration Fields
+
+#### For All Versions
+
 |Field Name|Description                                       |
 |:-------|:-------------------------------------------------|
 |host    |database host name or IP                          |
@@ -52,6 +57,8 @@ For Boundary Meter less than V4.0
 |source  |display name                                      |
 
 ### Metrics Collected
+
+#### For All Versions
 
 |Metric Name                                    |Description                                    |
 |:----------------------------------------------|:----------------------------------------------|
