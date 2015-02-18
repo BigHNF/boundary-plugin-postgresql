@@ -1,11 +1,12 @@
 {
-    "description" : "Awaiting Certification - Collects statistics from PostgreSQL Database",
-    "command" : "python postgres_plugin.py $(host) $(port) $(database) $(username) $(password) $(source)",
-    “postExtract” : “”,
-    "command_lua" : "boundary-meter index.lua $(host) $(port) $(database) $(username) $(password) $(source)",
-    “postExtract_lua” : “”,
-    "icon" : "icon.png",
-    "metrics" : [
+  "description" : "Awaiting Certification - Collects statistics from PostgreSQL Database",
+  "icon" : "icon.png",
+  "command" : "python postgres_plugin.py $(host) $(port) $(database) $(username) $(password) $(source)",
+  “command_lua” : “boundary-meter init.lua”,
+  “postExtract_lua” : “”,
+  "ignore" : "node_modules",
+
+  "metrics" : [
                  "POSTGRESQL_EXCLUSIVE_LOCKS",
                  "POSTGRESQL_ROW_EXCLUSIVE_LOCKS",
                  "POSTGRESQL_SHARE_ROW_EXCLUSIVE_LOCKS",
@@ -33,6 +34,7 @@
                  "POSTGRESQL_TUPLES_RETURNED",
                  "POSTGRESQL_TUPLES_UPDATED"
 	],
+
 	"dashboards": [
         { "name":"PostgreSQL Lock Stats", "layout": "d-w=3&d-h=2&d-pad=5&d-bg=none&d-g-POSTGRESQL_EXCLUSIVE_LOCKS=0-0-1-1&d-g-POSTGRESQL_ROW_EXCLUSIVE_LOCKS=0-1-1-1&d-g-POSTGRESQL_SHARE_ROW_EXCLUSIVE=1-1-1-1&d-g-POSTGRESQL_SHARE_UPDATE_EXCLUSIVE=2-1-1-1&d-g-POSTGRESQL_SHARE_LOCKS=2-0-1-1&d-g-POSTGRESQL_ACCESS_SHARE_LOCKS=1-0-1-1" },
         { "name":"PostgreSQL Reader Stats", "layout": "d-w=3&d-h=3&d-pad=5&d-bg=none&d-g-POSTGRESQL_CHECKPOINT_WRITE_TIME=0-0-1-1&d-g-POSTGRESQL_CHECKPOINTS_TIMED=0-1-1-1&d-g-POSTGRESQL_BUFFERS_ALLOCATED=0-2-1-1&d-g-POSTGRESQL_BUFFERS_CLEAN=1-0-1-1&d-g-POSTGRESQL_BUFFERS_BACKEND_FSYNC=1-1-1-1&d-g-POSTGRESQL_BUFFERS_BACKEND=1-2-1-1&d-g-POSTGRESQL_CHECKPOINTS_REQUESTED=2-2-1-1&d-g-POSTGRESQL_CHECKPOINT_SYNC_TIME=2-1-1-1&d-g-POSTGRESQL_BUFFERS_CHECKPOINT=2-0-1-1" },
