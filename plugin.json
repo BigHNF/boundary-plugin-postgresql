@@ -1,7 +1,7 @@
 {
   "description" : "Awaiting Certification - Collects statistics from PostgreSQL Database",
   "icon" : "icon.png",
-  "command" : "python postgres_plugin.py $(host) $(port) $(database) $(username) $(password) $(source)",
+  "command" : "python postgres_plugin.py",
   “command_lua” : “boundary-meter init.lua”,
   “postExtract_lua” : “”,
   "ignore" : "node_modules",
