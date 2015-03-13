@@ -42,7 +42,7 @@
 
     ],
 
-    "paramArray" : { "itemTitle" : ["source"], "schemaTitle" : "Host"},
+    "paramArray" : { "itemTitle" : ["source"], "schemaTitle" : "Database"},
     "paramSchema" : [
         {
             "title" : "host",
