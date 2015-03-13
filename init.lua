@@ -12,8 +12,8 @@ local connections = {
 	user = "postgres",
 	password = "123qwe",
 	database = "postgres",
-	source = ""
-        pollInterval = 5000
+	source = "",
+	pollInterval = 5000
 }}
 
 -- Fetching params
