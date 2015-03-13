@@ -23,22 +23,6 @@ end
 
 print("_bevent:Boundary LUA Postgres plugin up : version 1.0|t:info|tags:lua,plugin")
 
-local function poll(connections)
-	if table.getn(connections) > 0 then
-		local query = connections[1]
-		local dbcon = pginfo:new(query.host, query.port, query.user, query.password, query.database, query.source)
-		table.remove(connections, 1)
-
-		dbcon:establish(function(connection)
-			dbcon:get_databases(connection, function(dbs)
-				getStats(connection, query.source)
-				timer.setInterval(query.pollInterval, getStats, dbcon, connection, query.source)
-				poll(connections)
-			end)
-		end)
-	end
-end
-
 local function getStats(conobj, pgcon, source)
 	conobj:get_bg_writer_stats(pgcon, function(writer_stats)
 		conobj:get_lock_stats_mode(pgcon, function(db_locks)
@@ -80,6 +64,22 @@ local function getStats(conobj, pgcon, source)
 			end)
 		end)
 	end)
+end
+
+local function poll(connections)
+	if table.getn(connections) > 0 then
+		local query = connections[1]
+		local dbcon = pginfo:new(query.host, query.port, query.user, query.password, query.database, query.source)
+		table.remove(connections, 1)
+
+		dbcon:establish(function(connection)
+			dbcon:get_databases(connection, function(dbs)
+				getStats(connection, query.source)
+				timer.setInterval(query.pollInterval, getStats, dbcon, connection, query.source)
+				poll(connections)
+			end)
+		end)
+	end
 end
 
 poll(connections)
