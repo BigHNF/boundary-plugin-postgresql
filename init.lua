@@ -22,35 +22,27 @@ if (boundary.param ~= nil) then
 end
 
 print("_bevent:Boundary LUA Postgres plugin up : version 1.0|t:info|tags:lua,plugin")
-local dbcon = nil
 
 local function poll(connections)
 	if table.getn(connections) > 0 then
 		local query = connections[1]
-		local host = query.host
-		local port = query.port
-		local user = query.user
-		local password = query.password
-		local database = query.database
-		local source = query.source
-		local pollInterval = query.pollInterval
+		local dbcon = pginfo:new(query.host, query.port, query.user, query.password, query.database, query.source)
 		table.remove(connections, 1)
-		local dbcon = pginfo:new(host, port, user, password, database, source)
 
 		dbcon:establish(function(connection)
 			dbcon:get_databases(connection, function(dbs)
-				getStats(connection, source)
-				timer.setInterval(pollInterval, getStats, connection, source)
+				getStats(connection, query.source)
+				timer.setInterval(query.pollInterval, getStats, dbcon, connection, query.source)
 				poll(connections)
 			end)
 		end)
 	end
 end
 
-local function getStats(connection, source)
-	dbcon:get_bg_writer_stats(connection, function(writer_stats)
-		dbcon:get_lock_stats_mode(connection, function(db_locks)
-			dbcon:get_database_stats(connection, function(db_stats)
+local function getStats(conobj, pgcon, source)
+	conobj:get_bg_writer_stats(pgcon, function(writer_stats)
+		conobj:get_lock_stats_mode(pgcon, function(db_locks)
+			conobj:get_database_stats(pgcon, function(db_stats)
 							
 				--lock stats
 				p(string.format("POSTGRESQL_EXCLUSIVE_LOCKS %s %s", db_locks['all']['Exclusive'], source))
