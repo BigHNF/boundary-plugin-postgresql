@@ -14,7 +14,7 @@ local ffi = require("ffi")
 if ffi.os == "Windows" then
 	_G.POSTGRESQL_LIBRARY_PATH = ".\\windows-bindings\\lib\\x64\\pq"
 end
-postgresLuvit = require('luvit-postgres/postgresLuvit')
+postgresLuvit = require('postgresLuvit')
 
 
 local function callIfNotNil(callback, ...)
