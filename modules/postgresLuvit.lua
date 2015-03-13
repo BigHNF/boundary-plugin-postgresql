@@ -22,7 +22,7 @@
 -- SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 --------------------------------------------------------------------------
 
-local postgres = require("./postgresffi")
+local postgres = require("postgresffi")
 local timer = require('timer')
 local object = require('core').Object
 local table = require("table")
