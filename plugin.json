@@ -41,6 +41,8 @@
         { "name":"PostgreSQL DB Stats", "layout": "d-w=3&d-h=4&d-pad=5&d-bg=none&d-g-POSTGRESQL_BUFFERS_CHECKPOINT=0-0-1-1&d-g-POSTGRESQL_BLOCKS_READ=1-0-1-1&d-g-POSTGRESQL_DISK_SIZE=2-0-1-1&d-g-POSTGRESQL_TRANSACTIONS_COMMITTED=0-1-1-1&d-g-POSTGRESQL_TUPLES_DELETED=1-1-1-1&d-g-POSTGRESQL_TRANSACTIONS_ROLLEDBACK=2-1-1-1&d-g-POSTGRESQL_BLOCKS_HIT=0-2-1-1&d-g-POSTGRESQL_TUPLES_RETURNED=1-2-1-1&d-g-POSTGRESQL_TUPLES_FETCHED=2-2-1-1&d-g-POSTGRESQL_TUPLES_UPDATED=0-3-1-1&d-g-POSTGRESQL_TUPLES_INSERTED=2-3-1-1" }
 
     ],
+
+    "paramArray" : { "itemTitle" : ["source"], "schemaTitle" : "Host"},
     "paramSchema" : [
         {
             "title" : "host",
